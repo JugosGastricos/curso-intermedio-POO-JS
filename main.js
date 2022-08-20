@@ -101,3 +101,34 @@ console.log(obj7);
 const obj8 = structuredClone(obj1);
 
 console.log(obj8);
+
+//Clase 8:
+// function recursiva () {
+//     if () {
+
+//     } else {
+
+//     }
+// }
+const numeritos = [0,1,2,5,5,6,58,4,26,56,456,3,6,645]
+
+numeritos.forEach((value, index) => console.log(`${index}: ${value}`));
+
+for (let numerito = 0; numerito < numeritos.length; numerito ++){
+    console.log(`${numerito}: ${numeritos[numerito]}`);
+}
+
+let numerito = 0;
+function recursiva (parametro) {
+    if (parametro.length != 0) {
+        const firstNum = parametro[0];
+        numerito ++;
+        console.log(`${numerito}: ${firstNum}`);
+        parametro.shift(); 
+        return recursiva(parametro);
+    } else {
+        return numerito = 0;
+    }
+}
+
+recursiva(numeritos)
