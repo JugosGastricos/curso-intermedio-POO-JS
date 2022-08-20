@@ -55,3 +55,35 @@ Object.seal(juan);
 Object.freeze(juan);
 
 console.log(Object.getOwnPropertyDescriptors(juan));
+
+//Clase 6:
+const obj1 = {
+    a: 'a',
+    b: 'b',
+    c: {
+        d: 'd'
+    }
+};
+
+const obj2 = {};
+
+for (item in obj1) {
+    obj2[item] = obj1[item];
+}
+
+obj2.e = 'e';
+obj2.c.f = 'f';
+
+console.log(obj1, obj2);
+
+const obj3 = Object.assign({}, obj1);
+obj3.c.d = 'ddddd'
+console.log(obj3);
+
+const obj4 = Object.create(obj1);
+
+console.log(obj4);
+
+const obj5 = {...obj1};
+
+console.log(obj5);
