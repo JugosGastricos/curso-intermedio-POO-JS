@@ -87,3 +87,17 @@ console.log(obj4);
 const obj5 = {...obj1};
 
 console.log(obj5);
+
+//Clase 7:
+const obj6 = JSON.stringify(obj1)
+
+console.log(obj6);
+
+const stringyfiedComplexObj = JSON.stringify(obj1);
+const obj7 = JSON.parse(stringyfiedComplexObj);
+
+console.log(obj7);
+
+const obj8 = structuredClone(obj1);
+
+console.log(obj8);
