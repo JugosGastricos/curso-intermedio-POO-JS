@@ -173,3 +173,27 @@ function deepCopy(subject){
     
     return copySubject;
 }
+
+// Clase 10
+
+const studentBase = {
+    name: undefined,
+    email: undefined,
+    age: undefined,
+    approvedCourses: undefined,
+    learningPaths: undefined,
+    socialMedia: {
+        twitter: undefined,
+        instagram: undefined,
+        facebook: undefined,
+    },
+};
+
+const elJuan = deepCopy(studentBase);
+
+Object.defineProperty(elJuan, 'name', {
+    value: 'Juan',
+    configurable: false,
+});
+
+Object.seal(elJuan);
