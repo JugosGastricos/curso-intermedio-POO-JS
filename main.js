@@ -197,3 +197,37 @@ Object.defineProperty(elJuan, 'name', {
 });
 
 Object.seal(elJuan);
+
+//Clase 12:
+
+function createStudent({
+    name,
+    age,
+    email,
+    twitter,
+    facebook,
+    instagram,
+    approvedCourses,
+    learningPaths
+}) {
+
+    return {
+        name: name ?? console.error('Necesitas proporcionar tu nombre'),
+        age,
+        email: email ?? console.error('Necesitas proporcionar un email'),
+        approvedCourses: approvedCourses ?? 'No tienes cursos aprovados',
+        learningPaths: learningPaths ?? 'No haz elegido rutas de aprendizaje',
+        socialMedia: {
+            twitter,
+            instagram,
+            facebook,
+        }
+    };
+}
+
+const juanete = createStudent({
+    // name: 'Juanito',
+    // age: 18,
+    // email: 'juanito@frijolitos.com',
+    // twitter: 'fjuandc'
+});
