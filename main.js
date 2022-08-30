@@ -261,7 +261,11 @@ function createStudent2({
             return private._name;
         },
         set _name(newName){
+<<<<<<< HEAD
             newName.length == 0 ? console.warn('Tu nombre debe contener algún carácter') : newName.split(' ').length > 1 ? console.warn('Tu nombre no puede tener espacios') : private._name = newName;
+=======
+            private._name = newName
+>>>>>>> 10806c0e5b859fb9dedef16b647fcceaaca09e40
         }
         // readName(){
         //     return private._name;
