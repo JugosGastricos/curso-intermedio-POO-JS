@@ -198,7 +198,7 @@ Object.defineProperty(elJuan, 'name', {
 
 Object.seal(elJuan);
 
-//Clase 12:
+//Clase 11:
 
 function createStudent({
     name,
@@ -232,7 +232,7 @@ const juanete = createStudent({
     // twitter: 'fjuandc'
 });
 
-// Clase 13:
+// Clase 12:
 
 function createStudent2({
     name,
@@ -257,23 +257,29 @@ function createStudent2({
             instagram,
             facebook,
         },
-        readName(){
+        get _name(){
             return private._name;
         },
-        changeName(newName){
-            private._name = newName;
-        },
+        set _name(newName){
+            newName.length == 0 ? console.warn('Tu nombre debe contener algún carácter') : newName.split(' ').length > 1 ? console.warn('Tu nombre no puede tener espacios') : private._name = newName;
+        }
+        // readName(){
+        //     return private._name;
+        // },
+        // changeName(newName){
+        //     private._name = newName;
+        // },
     };
 
-    Object.defineProperties(public, { 
-        readName: {
-        writable: false,
-        configurable: false
-    },
-        changeName: {
-        writable: false,
-        configurable: false
-    }});
+    // Object.defineProperties(public, { 
+    //     readName: {
+    //     writable: false,
+    //     configurable: false
+    // },
+    //     changeName: {
+    //     writable: false,
+    //     configurable: false
+    // }});
     
     return public;
 }
@@ -284,3 +290,7 @@ const juanetete = createStudent2({
     email: 'juanito@frijolitos.com',
     twitter: 'fjuandc'
 });
+
+// Clase 13:
+
+//Usando getters y setters en la clase 12 :3
