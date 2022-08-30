@@ -231,3 +231,56 @@ const juanete = createStudent({
     // email: 'juanito@frijolitos.com',
     // twitter: 'fjuandc'
 });
+
+// Clase 13:
+
+function createStudent2({
+    name,
+    age,
+    email,
+    twitter,
+    facebook,
+    instagram,
+    approvedCourses,
+    learningPaths
+}) {
+    const private = {
+        _name: name ?? console.error('Necesitas proporcionar tu nombre'),
+        _email: email ?? console.error('Necesitas proporcionar un email'),
+    };
+    const public = {
+        age,
+        approvedCourses: approvedCourses ?? 'No tienes cursos aprovados',
+        learningPaths: learningPaths ?? 'No haz elegido rutas de aprendizaje',
+        socialMedia: {
+            twitter,
+            instagram,
+            facebook,
+        },
+        readName(){
+            return private._name;
+        },
+        changeName(newName){
+            private._name = newName;
+        },
+    };
+
+    Object.defineProperties(public, { 
+        readName: {
+        writable: false,
+        configurable: false
+    },
+        changeName: {
+        writable: false,
+        configurable: false
+    }});
+    
+    return public;
+}
+
+const juanetete = createStudent2({
+    name: 'Juanito',
+    age: 18,
+    email: 'juanito@frijolitos.com',
+    twitter: 'fjuandc'
+});
