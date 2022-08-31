@@ -136,11 +136,11 @@ recursiva(numeritos)
 //Clase 9
 
 function isObject(subject){
-    return typeof(subject) == 'Object';
+    return typeof(subject) == 'object';
 }
 
 function isArray(subject){
-    return typeof(subject) == 'Array';
+    return typeof(subject) == 'array';
 }
 
 function deepCopy(subject){
@@ -261,11 +261,7 @@ function createStudent2({
             return private._name;
         },
         set _name(newName){
-<<<<<<< HEAD
             newName.length == 0 ? console.warn('Tu nombre debe contener algún carácter') : newName.split(' ').length > 1 ? console.warn('Tu nombre no puede tener espacios') : private._name = newName;
-=======
-            private._name = newName
->>>>>>> 10806c0e5b859fb9dedef16b647fcceaaca09e40
         }
         // readName(){
         //     return private._name;
@@ -298,3 +294,74 @@ const juanetete = createStudent2({
 // Clase 13:
 
 //Usando getters y setters en la clase 12 :3
+
+// Clase 15: 
+
+function createLearningPath({
+    name,
+    courses,
+}){
+    const private = {
+        _name: name ?? console.error('Tu ruta de aprendizaje necesita un nombre'),
+        _courses: courses
+    };
+
+    const public = {
+        get _name(){
+            return private._name;
+        },
+        set _name(newName){
+            newName.length == 0 ? console.warn('Tu nombre debe contener algún carácter') : private._name = newName;
+        },
+
+        get _courses(){
+            return private._courses;
+        },
+    };
+
+    return public;
+}
+
+// Clase 18
+
+class SuperObject {
+
+    static isObject(subject){
+        return (typeof(subject) == 'object') && (subject != null) && (!Number.isFinite(subject.length)) ? true : false;
+    }
+    
+    static isArray(subject){
+        return (subject.length >= 0) && (typeof(subject) != 'string') ? true : false;
+    }
+
+    static deepCopy(subject){
+        let copySubject;
+    
+        const subjectIsArray = isArray(subject);
+        const subjectIsObject = isObject(subject);
+    
+        if (subjectIsArray) {
+            copySubject = [];
+        } else if (subjectIsObject) {
+            copySubject = {};
+        } else {
+            return subject;
+        }
+    
+        for (key in subject){
+            const keyIsObject = isObject(subject[key]);
+    
+            if (keyIsObject) {
+                copySubject[key] = deepCopy(subject[key]);
+            } else {
+                if (subjectIsArray) {
+                    copySubject.push(subject[key]);
+                } else {
+                    copySubject[key] = subject[key];
+                }
+            }
+        }
+        
+        return copySubject;
+    }
+}
